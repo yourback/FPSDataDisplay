@@ -1,0 +1,123 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'datashow.ui'
+#
+# Created by: PyQt5 UI code generator 5.12.2
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setContentsMargins(10, -1, 10, 0)
+        self.verticalLayout.setSpacing(30)
+        self.verticalLayout.setObjectName("verticalLayout")
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
+        self.horizontalLayout_2.setSpacing(7)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.cbb_port = ComboxAdjust(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cbb_port.sizePolicy().hasHeightForWidth())
+        self.cbb_port.setSizePolicy(sizePolicy)
+        self.cbb_port.setMaximumSize(QtCore.QSize(89, 16777215))
+        self.cbb_port.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
+        self.cbb_port.setFrame(True)
+        self.cbb_port.setObjectName("cbb_port")
+        self.cbb_port.addItem("")
+        self.horizontalLayout_2.addWidget(self.cbb_port)
+        self.btn_refresh_port = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_refresh_port.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.btn_refresh_port.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/image/refresh_48px_1229014_easyicon.net.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_refresh_port.setIcon(icon)
+        self.btn_refresh_port.setShortcut("")
+        self.btn_refresh_port.setAutoDefault(False)
+        self.btn_refresh_port.setDefault(False)
+        self.btn_refresh_port.setFlat(True)
+        self.btn_refresh_port.setObjectName("btn_refresh_port")
+        self.horizontalLayout_2.addWidget(self.btn_refresh_port)
+        self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.cbb_group = QtWidgets.QComboBox(self.centralwidget)
+        self.cbb_group.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.cbb_group.setObjectName("cbb_group")
+        self.cbb_group.addItem("")
+        self.cbb_group.addItem("")
+        self.cbb_group.addItem("")
+        self.cbb_group.addItem("")
+        self.verticalLayout.addWidget(self.cbb_group)
+        self.btn_port = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_port.setObjectName("btn_port")
+        self.verticalLayout.addWidget(self.btn_port)
+        self.btn_pause = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_pause.setObjectName("btn_pause")
+        self.verticalLayout.addWidget(self.btn_pause)
+        self.btn_clear_paint = QtWidgets.QPushButton(self.centralwidget)
+        self.btn_clear_paint.setObjectName("btn_clear_paint")
+        self.verticalLayout.addWidget(self.btn_clear_paint)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem1)
+        self.horizontalLayout_4.addLayout(self.verticalLayout)
+        self.widget = GraphicsLayoutWidget(self.centralwidget)
+        self.widget.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
+        self.widget.setObjectName("widget")
+        self.horizontalLayout_4.addWidget(self.widget)
+        self.horizontalLayout_4.setStretch(1, 1)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_4)
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem2)
+        self.about = LabelClickable(self.centralwidget)
+        self.about.setObjectName("about")
+        self.horizontalLayout_8.addWidget(self.about)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_8)
+        self.horizontalLayout.addLayout(self.verticalLayout_2)
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 26))
+        self.menubar.setObjectName("menubar")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "外骨骼测试平台"))
+        self.cbb_port.setItemText(0, _translate("MainWindow", "选择串口"))
+        self.cbb_group.setItemText(0, _translate("MainWindow", "选择横纵坐标"))
+        self.cbb_group.setItemText(1, _translate("MainWindow", "气压-力"))
+        self.cbb_group.setItemText(2, _translate("MainWindow", "位移-力"))
+        self.cbb_group.setItemText(3, _translate("MainWindow", "气压-位移"))
+        self.btn_port.setText(_translate("MainWindow", "打开串口"))
+        self.btn_pause.setText(_translate("MainWindow", "开始"))
+        self.btn_clear_paint.setText(_translate("MainWindow", "清除图案"))
+        self.about.setText(_translate("MainWindow", "当前版本号：V0.2"))
+
+
+from diy.combox import ComboxAdjust
+from diy.label_clickable import LabelClickable
+from pyqtgraph import GraphicsLayoutWidget
+from res import res_rc
