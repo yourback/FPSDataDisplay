@@ -6,7 +6,6 @@ import sys
 
 import pyqtgraph as pg
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from pyqtgraph.Qt import QtCore, QtGui
 import numpy as np
 
 

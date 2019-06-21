@@ -7,7 +7,7 @@ import serial.tools.list_ports
 
 from diy.aboutdialog.amdialog import AMDialog
 from diy.queuephone import QueuePhone
-from diy.settings import port_time, printlog
+from diy.settings import port_time, printlog, app_name, version_code
 from data_source.portworker import PortWorker
 
 
@@ -20,6 +20,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         pg.setConfigOptions(antialias=True)  # 使曲线看起来更光滑，而不是锯齿状
 
         self.setupUi(self)
+
+        self.setWindowTitle(app_name)
+        self.about.setText(version_code)
 
         # combobox group action
         self.cbb_group.currentIndexChanged.connect(self.cbb_group_changed)
@@ -41,12 +44,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # update log
         self.about.clicked.connect(self.about_click)
 
+        # port check per 5s
+        self.port_check_timer = pg.QtCore.QTimer()
+        self.port_check_timer.timeout.connect(self.port_check)
+        self.port_check_timer.start(5000)
 
     def about_click(self):
         '''查看升级日志'''
         ui = AMDialog()
         # ui.show()
         ui.exec()
+
+    # port _check
+    def port_check(self):
+        printlog('端口检测')
+        if len(self.port_list) != len(list(serial.tools.list_ports.comports())):
+            self.cbb_port_init()
 
     def cbb_port_init(self):
         '''
@@ -56,11 +69,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.cbb_group.setEnabled(False)
 
         # data
-        # self.cbb_port.clear()
+        self.cbb_port.clear()
+        # for i in range(self.cbb_port.count() + 1):
+        #     print(i)
+        #     print(self.cbb_port.removeItem(i))
+
         self.port_list = list(serial.tools.list_ports.comports())
+        printlog('串口列表：%s' % self.port_list)
         if len(self.port_list) != 0:
             for port in self.port_list:
-                # printlog(type(port))
                 self.cbb_port.addItem(port.__str__())
 
     @pyqtSlot()
@@ -73,7 +90,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.cbb_port.setEnabled(False)
 
             # hire worker and give him the phone
-            self.port_worker = PortWorker(paintdata=self.phone_queue, portnum=self.port)
+            # self.port_worker = PortWorker(paintdata=self.phone_queue, portnum=self.port)
+            self.port_worker = PortWorker(paintdata=self.phone_queue,
+                                          portnum=self.port_list[self.cbb_port.currentIndex() - 1])
             # let worker work
             self.start_save()
 
@@ -137,7 +156,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.cbb_group.setEnabled(False)
         else:
             self.cbb_group.setEnabled(True)
-            self.port = self.port_list[i - 1].device
+            # self.port = self.port_list[i-1].device
 
     def initpg(self):
         '''

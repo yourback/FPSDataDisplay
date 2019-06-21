@@ -120,4 +120,4 @@ class Ui_MainWindow(object):
 from diy.combox import ComboxAdjust
 from diy.label_clickable import LabelClickable
 from pyqtgraph import GraphicsLayoutWidget
-from res import res_rc
+import res_rc

@@ -1,7 +1,5 @@
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QApplication, QMainWindow
-import PyQt5
-import pyqtgraph
 
 from data_save.saveprogram import save_excel
 from data_show.datashow import Ui_MainWindow

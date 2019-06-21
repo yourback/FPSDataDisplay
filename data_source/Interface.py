@@ -1,4 +1,4 @@
-import serial
+from serial import Serial
 
 from diy.settings import port_time, printlog
 
@@ -8,7 +8,7 @@ class PortManager:
     def __init__(self, port_num):
         super(PortManager, self).__init__()
         self.port_num = port_num
-        self.ser = serial.Serial(self.port_num, 115200, timeout=port_time)  # windows系统使用com8口连接串行口
+        self.ser = Serial(self.port_num, 115200, timeout=port_time)  # windows系统使用com8口连接串行口
         # self.port_num = port_num
 
     def close_port(self):

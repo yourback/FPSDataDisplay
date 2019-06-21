@@ -67,7 +67,17 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="app_name">
+        <property name="text">
+         <string>软件名称：</string>
+        </property>
+        <property name="indent">
+         <number>30</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="version_code">
         <property name="enabled">
          <bool>true</bool>
         </property>

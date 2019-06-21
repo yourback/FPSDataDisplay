@@ -3,6 +3,6 @@ import os
 
 
 def save_excel(self):
-    f_name, _ = QFileDialog.getSaveFileName(self, '保存程序', '.', '*.xls')
+    f_name, _ = QFileDialog.getSaveFileName(self, '保存程序', '.', '*.PRG')
     if f_name:
         os.rename('temple_data.xls', f_name)
