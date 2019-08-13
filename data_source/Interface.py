@@ -1,4 +1,5 @@
-from serial import Serial
+# from serial import Serial
+from serial.serialwin32 import Serial
 
 from diy.settings import port_time, printlog
 
